@@ -1,12 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_biblioteca/models/book_model.dart';
+import 'package:flutter_biblioteca/models/opinion_model.dart';
 
 class BookScreen extends StatelessWidget {
-  const BookScreen({super.key});
+  BookScreen({super.key});
 
+  final BookModel bookModel = BookModel(
+      id: "001",
+      name: "Senhor dos Anéis",
+      author: "J.R.R. Tolkien",
+      synopsis: "Uma sinopse ai");
+  final List<OpinionModel> listOpinion = [
+    OpinionModel(id: "001", opinion: "Maravilhoso", date: "2024-05-29"),
+    OpinionModel(id: "002", opinion: "Top de mais", date: "2024-01-12")
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Senhor dos Anéis")),
+      appBar: AppBar(title: Text("${bookModel.name} / ${bookModel.author}")),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           print("clicado");
@@ -15,8 +26,7 @@ class BookScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: ListView(
           children: [
             ElevatedButton(
               onPressed: () {},
@@ -29,7 +39,7 @@ class BookScreen extends StatelessWidget {
                 fontSize: 18,
               ),
             ),
-            const Text("Livro escrito por J.R.R.Tolkien"),
+            Text(bookModel.synopsis),
             const Divider(),
             const Text(
               "O que eu achei:",
@@ -38,7 +48,13 @@ class BookScreen extends StatelessWidget {
                 fontSize: 18,
               ),
             ),
-            const Text("História ótima")
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: List.generate(listOpinion.length, (index) {
+                OpinionModel opinionLast = listOpinion[index];
+                return Text(opinionLast.opinion);
+              }),
+            )
           ],
         ),
       ),
