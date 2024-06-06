@@ -16,12 +16,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-        appBarTheme: AppBarTheme(
-          iconTheme: IconThemeData(color: Colors.black),
-          color: Colors.deepPurpleAccent, //<-- SEE HERE
-        ),
-      ),
+          primarySwatch: Colors.blue,
+          appBarTheme: AppBarTheme(
+            iconTheme: IconThemeData(color: Colors.black),
+            color: Colors.deepPurple[200],
+          )),
       home: BookScreen(),
     );
   }

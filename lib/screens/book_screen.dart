@@ -17,6 +17,7 @@ class BookScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.purple[300],
       appBar: AppBar(title: Text("${bookModel.name} / ${bookModel.author}")),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -24,13 +25,33 @@ class BookScreen extends StatelessWidget {
         },
         child: const Icon(Icons.add),
       ),
-      body: Padding(
+      body: Container(
+        margin: const EdgeInsets.all(9),
         padding: const EdgeInsets.all(16.0),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+        ),
         child: ListView(
           children: [
-            ElevatedButton(
-              onPressed: () {},
-              child: const Text("Enviar capa"),
+            SizedBox(
+              height: 250,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {},
+                    child: const Text("Enviar capa"),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {},
+                    child: const Text("Tirar foto"),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 8,
             ),
             const Text(
               "Sinopse",
@@ -39,8 +60,16 @@ class BookScreen extends StatelessWidget {
                 fontSize: 18,
               ),
             ),
+            const SizedBox(
+              height: 8,
+            ),
             Text(bookModel.synopsis),
-            const Divider(),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Divider(
+                color: Colors.black,
+              ),
+            ),
             const Text(
               "O que eu achei:",
               style: TextStyle(
@@ -48,11 +77,28 @@ class BookScreen extends StatelessWidget {
                 fontSize: 18,
               ),
             ),
+            const SizedBox(
+              height: 8,
+            ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: List.generate(listOpinion.length, (index) {
                 OpinionModel opinionLast = listOpinion[index];
-                return Text(opinionLast.opinion);
+                return ListTile(
+                  contentPadding: EdgeInsets.zero,
+                  title: Text(opinionLast.opinion),
+                  subtitle: Text(opinionLast.date),
+                  leading: const Icon(Icons.double_arrow),
+                  trailing: IconButton(
+                    icon: const Icon(
+                      Icons.delete,
+                      color: Colors.red,
+                    ),
+                    onPressed: () {
+                      print("Deletar ${opinionLast.opinion}");
+                    },
+                  ),
+                );
               }),
             )
           ],
