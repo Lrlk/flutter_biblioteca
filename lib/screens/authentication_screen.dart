@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_biblioteca/_core/app_colors.dart';
+import 'package:flutter_biblioteca/components/authentication_Input_Decoration.dart';
 
 class AuthenticationScreen extends StatefulWidget {
   const AuthenticationScreen({super.key});
@@ -49,41 +50,34 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                             fontWeight: FontWeight.bold,
                             color: Colors.white),
                       ),
-                      const SizedBox(
-                        height: 32,
-                      ),
+                      const SizedBox(height: 32),
                       TextFormField(
-                        decoration: const InputDecoration(
-                          label: Text("E-mail:"),
-                        ),
+                        decoration: getAuthenticationInputDecoration("E-mail:"),
                       ),
+                      const SizedBox(height: 8),
                       TextFormField(
-                        decoration: const InputDecoration(
-                          label: Text("Senha:"),
-                        ),
+                        decoration: getAuthenticationInputDecoration("Senha:"),
                         obscureText: true,
                       ),
                       Visibility(
                         visible: !signIn,
                         child: Column(
                           children: [
+                            const SizedBox(height: 8),
                             TextFormField(
-                              decoration: const InputDecoration(
-                                label: Text("Confirmação de senha:"),
-                              ),
+                              decoration: getAuthenticationInputDecoration(
+                                  "Confirme a senha:"),
                               obscureText: true,
                             ),
+                            const SizedBox(height: 8),
                             TextFormField(
-                              decoration: const InputDecoration(
-                                label: Text("Apelido:"),
-                              ),
+                              decoration:
+                                  getAuthenticationInputDecoration("Apelido:"),
                             ),
                           ],
                         ),
                       ),
-                      const SizedBox(
-                        height: 16,
-                      ),
+                      const SizedBox(height: 16),
                       ElevatedButton(
                         onPressed: () {},
                         child: Text((signIn) ? "Entrar" : "Cadastrar"),
