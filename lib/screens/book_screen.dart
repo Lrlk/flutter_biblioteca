@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_biblioteca/_core/app_colors.dart';
 import 'package:flutter_biblioteca/models/book_model.dart';
 import 'package:flutter_biblioteca/models/opinion_model.dart';
 
@@ -17,8 +18,35 @@ class BookScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.purple[300],
-      appBar: AppBar(title: Text("${bookModel.name} / ${bookModel.author}")),
+      backgroundColor: AppColors.purpleDark,
+      appBar: AppBar(
+        title: Column(
+          children: [
+            Text(
+              bookModel.name,
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 22,
+              ),
+            ),
+            Text(
+              bookModel.author,
+              style: const TextStyle(
+                fontSize: 15,
+              ),
+            ),
+          ],
+        ),
+        centerTitle: true,
+        backgroundColor: AppColors.purpleLight,
+        elevation: 0,
+        toolbarHeight: 72,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(15),
+          ),
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           print("clicado");

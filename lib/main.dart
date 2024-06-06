@@ -1,7 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter_biblioteca/screens/book_screen.dart';
+import 'package:flutter_biblioteca/screens/authentication_screen.dart';
+//import 'package:flutter_biblioteca/screens/book_screen.dart';
 
 //ab
 void main() {
@@ -15,13 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-          primarySwatch: Colors.blue,
-          appBarTheme: AppBarTheme(
-            iconTheme: IconThemeData(color: Colors.black),
-            color: Colors.deepPurple[200],
-          )),
-      home: BookScreen(),
+      home: AuthenticationScreen(),
     );
   }
 }
